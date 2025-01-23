@@ -1,10 +1,7 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import NoticiaViewSet
-
-router = DefaultRouter()
-router.register(r'noticias', NoticiaViewSet)
+from django.urls import path
+from .views import NoticiaListCreateView, NoticiaDetailView
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('noticias/', NoticiaListCreateView.as_view(), name='listar_criar_noticias'),
+    path('noticias/<int:id>/', NoticiaDetailView.as_view(), name='detalhar_atualizar_remover_noticia'),
 ]
