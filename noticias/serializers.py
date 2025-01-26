@@ -5,7 +5,6 @@ class NoticiaSerializer(serializers.Serializer):
     titulo = serializers.CharField(max_length=255)
     conteudo = serializers.CharField()
     autor = serializers.CharField()
-    #publicado = serializers.BooleanField()
     data_criacao = serializers.CharField(read_only=True)
 
     def validate_autor(self, value):

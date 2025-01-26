@@ -15,7 +15,6 @@ def formatar_data():
 def adicionar_noticia(
     titulo: str,
     conteudo: str,
-    #publicado: bool,
     autor: str
 ):
     global contador_id
@@ -27,7 +26,6 @@ def adicionar_noticia(
         'titulo': titulo,
         'conteudo': conteudo,
         'autor': formatar_autor(autor),
-        #'publicado': publicado,
         'data_criacao': data_criacao
     }
     return banco[identificador] 
@@ -36,7 +34,6 @@ def editar_noticia(
     identificador: int,
     titulo: str,
     conteudo: str,
-    #publicado: bool,
     autor: str
 ):
     data_criacao = formatar_data()
@@ -45,7 +42,6 @@ def editar_noticia(
         'titulo': titulo,
         'conteudo': conteudo,
         'autor': formatar_autor(autor),
-        #'publicado': publicado,
         'data_criacao': data_criacao
     }
     return banco[identificador]
@@ -57,4 +53,15 @@ def listar_todas_noticias():
     return banco
 
 def remover_noticia(identificador: int):
-    del banco[identificador]
+    if identificador in banco:
+        banco[identificador]['removido'] = True
+        banco[identificador]['data_remocao'] = formatar_data()
+    else:
+        raise KeyError("Notícia não encontrada.")
+
+def restaurar_noticia(identificador: int):
+    if identificador in banco and banco[identificador]['removido']:
+        banco[identificador]['removido'] = False
+        banco[identificador]['data_remocao'] = None
+        return banco[identificador]
+    raise KeyError("Notícia não encontrada ou não removida.")

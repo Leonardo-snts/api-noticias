@@ -6,7 +6,8 @@ from .banco_memoria import (
     editar_noticia,
     listar_noticia,
     listar_todas_noticias,
-    remover_noticia
+    remover_noticia,
+    restaurar_noticia
 )
 
 class NoticiaListCreateView(views.APIView):
@@ -20,7 +21,6 @@ class NoticiaListCreateView(views.APIView):
             noticia = adicionar_noticia(
                 titulo=serializer.validated_data['titulo'],
                 conteudo=serializer.validated_data['conteudo'],
-                #publicado=serializer.validated_data['publicado'],
                 autor=serializer.validated_data['autor']
             )
             return Response(noticia, status=status.HTTP_201_CREATED)
@@ -42,7 +42,6 @@ class NoticiaDetailView(views.APIView):
                     identificador=id,
                     titulo=serializer.validated_data['titulo'],
                     conteudo=serializer.validated_data['conteudo'],
-                    #publicado=serializer.validated_data['publicado'],
                     autor=serializer.validated_data['autor']
                 )
                 return Response(noticia, status=status.HTTP_200_OK)
@@ -53,6 +52,14 @@ class NoticiaDetailView(views.APIView):
     def delete(self, request, id):
         try:
             remover_noticia(id)
-            return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response({'message': 'Notícia removida com sucesso'}, status=status.HTTP_204_NO_CONTENT)
         except KeyError:
             return Response({'error': 'Notícia não encontrada'}, status=status.HTTP_404_NOT_FOUND)
+
+class NoticiaRestaurarView(views.APIView):
+    def put(self, request, id):
+        try:
+            noticia = restaurar_noticia(id)
+            return Response({'message': 'Notícia restaurada com sucesso', 'noticia': noticia}, status=status.HTTP_200_OK)
+        except KeyError:
+            return Response({'error': 'Notícia não encontrada ou não removida'}, status=status.HTTP_404_NOT_FOUND)
