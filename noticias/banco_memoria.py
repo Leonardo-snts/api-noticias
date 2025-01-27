@@ -12,7 +12,7 @@ def carregar_dados():
     if os.path.exists(ARQUIVO_DADOS):
         with open(ARQUIVO_DADOS, 'r', encoding='utf-8') as arquivo:
             dados = json.load(arquivo)
-            banco = dados.get('noticias', {})
+            banco = {int(k): v for k, v in dados.get('noticias', {}).items()}
             contador_id = dados.get('contador_id', 1)
     else:
         salvar_dados()

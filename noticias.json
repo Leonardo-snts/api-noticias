@@ -2,22 +2,13 @@
     "noticias": {
         "1": {
             "id": 1,
-            "titulo": "Notícia de Primeira",
-            "conteudo": "LOREM IPSUM DOLOR SIT AMET, Data da Notícia 10 de dezembro de 2018 LOREM IPSUM DOLOR SIT AMET, Lorem ipsum dolor sit amet, Consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.",
-            "autor": "Silva, Joao",
-            "data_criacao": "27/01/2025 14:44:43",
-            "removido": false,
-            "data_remocao": null
-        },
-        "2": {
-            "id": 2,
-            "titulo": "Notícia de Segunda",
-            "conteudo": "Durante o patrulhamento preventivo os patrulheiros Subinspetor Junior os Gcm’s Reinaldo e Jean depararam com um tatu em meio a via pública, precisamente na rua da Ervilha.",
+            "titulo": "Notícia teste",
+            "conteudo": "Apenas Teste",
             "autor": "Santos, Leonardo",
-            "data_criacao": "27/01/2025 14:45:42",
+            "data_criacao": "27/01/2025 15:00:57",
             "removido": false,
             "data_remocao": null
         }
     },
-    "contador_id": 3
+    "contador_id": 2
 }
